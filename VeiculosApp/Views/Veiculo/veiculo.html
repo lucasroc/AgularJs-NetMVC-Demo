@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html ng-app="veiculosApp">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="veiculo.js"></script>
+    <title>Cadastro - Veículos</title>
+</head>
+<body>
+    <h3>Dados do véiculo</h3>
+    <div ng-controller="veiculosController">
+        <label>Renavam</label>
+        <input type="text" id="txtRenavam" ng-model="novoVeiculo.Renavan" required />
+        <label>Placa</label>
+        <input type="text" id="txtPlaca" ng-model="novoVeiculo.Placa" required />
+        <label>Nome Proprietário</label>
+        <input type="text" id="txtProprietario" ng-model="novoVeiculo.NomeProprietario" required />
+        <label>Cpf</label>
+        <input type="text" id="txtCpf" ng-model="novoVeiculo.Cpf" required />
+        <label>Bloqueado</label>
+        <input type="checkbox" id="chkBloqueado" ng-model="novoVeiculo.Bloqueado" />
+
+        <input type="submit" value="Inserir" ng-click="add()" />
+        <br />
+        <hr />
+        <!-- Veículos cadastrados -->
+        <h3 ng-show="loading">Carregando...</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Renavan</th>
+                    <th>Placa</th>
+                    <th>Nome Proprietário</th>
+                    <th>Cpf</th>
+                    <th>Bloqueado</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="veiculo in veiculos">
+                <td><input type="text" ng-model="veiculo.Renavan" /></td>
+                <td><input type="text" ng-model="veiculo.Placa" /></td>
+                <td><input type="text" ng-model="veiculo.NomeProprietario" /></td>
+                <td><input type="text" ng-model="veiculo.Cpf" /></td>
+                <td><input type="checkbox" ng-model="veiculo.Bloqueado" /></td>
+                <td><input type="button" ng-click="update(veiculo)" value="Atualizar" /></td>
+                <td><input type="button" ng-click="delete(veiculo)" value="Excluir" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
